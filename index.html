@@ -3,29 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab_2</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Lab 2</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
+    <div class="container">
+        <h1 class = "centerText"> Mini Oasis </h1>
+        <h3 class = "centerText"><i>Ottawa's Top #10 Grocery Store</i></h3>
+        <br>
+        <!-- Tab links, each one with an onclick event associated with it -->
+        <div class="tab">
+        <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
+        <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
+        <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+        </div>
 
-    <div class="tabs">
-        <button class="tab" onclick="openTab('client')">Client</button>
-        <button class="tab" onclick="openTab('product')">Product</button>
-        <button class="tab" onclick="openTab('cart')">Cart</button>
+        <!-- Tab content -->
+        <div id="Client" class="tabcontent">
+        <h3>Client Information</h3>
+        <p>Please select the type of product.</p>
+            Choose a Category:
+            <select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
+                <option value=""></option>
+                <option value="Organic">Organic</option>
+                <option value="NonOrganic">Non-Organic</option>
+                <option value="Vegan">Vegan</option>
+                <option value="GlutenFree">Gluten Free</option>
+                <option value="LactoseFree">Lactose Free</option>
+                <option value="Diabetic">Diabetic</option>
+            </select>
+            <br><br>
+        </div>
+        
+
+        <div id="Products" class="tabcontent">
+        <h3>Your targeted products</h3>
+        <p>We preselected products based on your restrictions.</p>
+            Choose items to buy:
+            <div id="displayProduct"></div>
+            <br>
+            <button id="addCart" type="button" class="block" onclick="selectedItems()">
+                Add selected items to cart.
+            </button> 
+        </div>
+
+        <div id="Cart" class="tabcontent">
+        <h3>Cart</h3>
+        <p>Here is your cart.</p>
+        <div id="displayCart"></div>
+        </div>
+        <p style="font-size: 13px;"><i>Signature: Quoc Dat Phung, Ayman Naciri, Isam Karroum </i></p>
+        <script src="scripts/navigation.js"></script>
+        <script src="scripts/main.js"></script>
+        
     </div>
-
-    <div id="client" class="tab-content">
-        <!-- 'Client' tab goes here -->
-    </div>
-
-    <div id="product" class="tab-content">
-        <!-- 'Product' tab goes here -->
-    </div>
-
-    <div id="cart" class="tab-content">
-        <!-- 'Cart' tab goes here -->
-    </div>
-
-    <script src="script.js"></script>
+    
 </body>
 </html>
+
+<!-- Signature: Quoc Dat Phung, Ayman Naciri, Isam Karroum -->
