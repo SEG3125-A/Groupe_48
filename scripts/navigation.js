@@ -29,35 +29,53 @@ function populateListProductChoices(slct1, slct2) {
   var s2 = document.getElementById(slct2);
   let displayProductHeader = document.getElementById("displayProductHeader");
   let categoryName;
-  for (let i = 0; i < s1.children.length; i++) {
-    const option = s1.children[i];
 
-    if (option.value == s1.value) {
-      categoryName = option.innerText.toLowerCase();
+  let optionArray;
+
+  if (s1.value === "NoPreference") {
+    categoryName = "All Products";
+    displayProductHeader.innerText = `Choose items to buy from ${categoryName}:`;
+    // Display all products
+    optionArray = products.map(product => [product.name, product.price]);
+  } else {
+    for (let i = 0; i < s1.children.length; i++) {
+      const option = s1.children[i];
+
+      if (option.value == s1.value) {
+        categoryName = option.innerText.toLowerCase();
+      }
     }
-  }
-  displayProductHeader.innerText = `Choose items to buy from the ${categoryName} category:`;
+    displayProductHeader.innerText = `Choose items to buy from the ${categoryName} category:`;
 
-  // s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
+    // Obtain a reduced list of products based on restrictions
+    optionArray = restrictListProducts(products, s1.value);
+  }
+
+  // Clear the previous content
   s2.innerHTML = "";
 
-  // obtain a reduced list of products based on restrictions
-  var optionArray = restrictListProducts(products, s1.value);
-
-  //sort the array from least the greatest based on the second element (price)
+  // Sort the array from least to greatest based on the second element (price)
   optionArray.sort(function (a, b) {
     return a[1] - b[1];
   });
 
-  // for each item in the array, create a checkbox element, each containing information such as:
-  // <input type="checkbox" name="product" value="Bread">
-  // <label for="Bread">Bread/label><br>
-
-  for (i = 0; i < optionArray.length; i++) {
+  // For each item in the array, create a checkbox element
+  for (let i = 0; i < optionArray.length; i++) {
     let productNode = document.createElement("div");
 
     var productName = optionArray[i][0];
     var productPrice = optionArray[i][1];
+    var productImage = products.find((p) => p.name === productName).image;
+
+    // Display product image
+    let img = document.createElement("img");
+    img.src = productImage;
+    img.alt = productName + " image";
+    img.style.width = "200px"; // make sure these values are the same as displayProduct img in css
+    img.style.height = "200px"; 
+
+    productNode.appendChild(img);
+
 
     let quantityLabel = document.createElement("label");
     quantityLabel.for = `${productName}-quantity`;
@@ -86,7 +104,7 @@ function populateListProductChoices(slct1, slct2) {
     );
 
     productNode.appendChild(label);
-
+        
     // create a breakline node and add in HTML DOM
     s2.appendChild(productNode);
   }
@@ -173,4 +191,4 @@ function selectedItems() {
 document.querySelector(".tablinks").click();
 populateListProductChoices("dietSelect", "displayProduct");
 
-//<!-- Signature: Quoc Dat Phung, Ayman Naciri, Aleander Azizi-Martin -->
+//<!-- Signature: Quoc Dat Phung, Ayman Naciri, Alexander Azizi-Martin -->

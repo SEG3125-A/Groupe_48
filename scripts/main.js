@@ -19,6 +19,7 @@ var products = [
     lactoseFree: true,
     diabetic: true,
     price: 1.99,
+    image: "images/broccoli.jpg",
   },
   {
     name: "bread",
@@ -28,6 +29,7 @@ var products = [
     lactoseFree: false,
     diabetic: false,
     price: 2.35,
+    image: "images/bread.jpg",
   },
   {
     name: "salmon",
@@ -37,6 +39,7 @@ var products = [
     lactoseFree: true,
     diabetic: true,
     price: 10.0,
+    image: "images/salmon.jpg",
   },
   {
     name: "ice cream",
@@ -46,6 +49,7 @@ var products = [
     lactoseFree: true,
     diabetic: true,
     price: 3.5,
+    image: "images/icecream.png",
   },
   {
     name: "salad",
@@ -55,6 +59,7 @@ var products = [
     lactoseFree: true,
     diabetic: true,
     price: 4.5,
+    image: "images/salad.jpg",
   },
   {
     name: "cereal",
@@ -64,6 +69,7 @@ var products = [
     lactoseFree: true,
     diabetic: false,
     price: 5.5,
+    image: "images/cereal.jpg",
   },
   {
     name: "blueberry",
@@ -73,6 +79,7 @@ var products = [
     lactoseFree: true,
     diabetic: false,
     price: 6.7,
+    image: "images/blueberry.jpg",
   },
   {
     name: "soy sauce",
@@ -82,6 +89,7 @@ var products = [
     lactoseFree: true,
     diabetic: false,
     price: 2.6,
+    image: "images/soysauce.png",
   },
   {
     name: "soda drink",
@@ -91,6 +99,7 @@ var products = [
     lactoseFree: true,
     diabetic: false,
     price: 1.3,
+    image: "images/soda.jpg",
   },
   {
     name: "milk",
@@ -100,6 +109,7 @@ var products = [
     lactoseFree: false,
     diabetic: false,
     price: 5.8,
+    image: "images/milk.jpg",
   },
 ];
 
@@ -138,4 +148,4 @@ function getTotalPrice(chosenProducts) {
   return totalPrice;
 }
 
-//<!-- Signature: Quoc Dat Phung, Ayman Naciri, Aleander Azizi-Martin -->
+//<!-- Signature: Quoc Dat Phung, Ayman Naciri, Alexander Azizi-Martin -->

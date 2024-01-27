@@ -48,4 +48,32 @@
   border-top: none;
 }
 
-/*<!-- Signature: Quoc Dat Phung, Ayman Naciri, Aleander Azizi-Martin -->*/
+#displayProduct img {
+  width: 200px; 
+  height: 200px; 
+  margin-right: 10px; 
+}
+
+.quantity-counter {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-counter button {
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 8px;
+}
+
+.quantity-counter span {
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+/*<!-- Signature: Quoc Dat Phung, Ayman Naciri, Alxeander Azizi-Martin -->*/
+
