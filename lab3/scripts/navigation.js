@@ -75,7 +75,7 @@ function populateListProductChoices(slct1, slct2) {
   optionArray = optionArray.sort(function (a, b) {
     return a[1] - b[1];
   }).filter(([name]) => {
-    return !searchFilter || name.match(searchFilter)
+    return !searchFilter || name.toLowerCase().match(searchFilter.toLowerCase())
   });
 
   // For each item in the array, create a checkbox element
