@@ -36,6 +36,7 @@ function handleSearch() {
   searchFilter = text;
 
   populateListProductChoices("dietSelect", 'displayProduct');
+  
 }
 
 // generate a checkbox list from a list of products
@@ -67,6 +68,17 @@ function populateListProductChoices(slct1, slct2) {
     // Obtain a reduced list of products based on restrictions
     optionArray = restrictListProducts(products, s1.value);
   }
+
+  // Obtain a reduced list of products based on restrictions and price range
+  optionArray = restrictListProducts(products, s1.value).filter(
+    ([name, price]) => {
+      const productPrice = Number.parseFloat(price);
+      const minPrice = Number.parseFloat(document.getElementById("minPriceRange").value);
+      const maxPrice = Number.parseFloat(document.getElementById("maxPriceRange").value);
+
+      return productPrice >= minPrice && productPrice <= maxPrice && (!searchFilter || name.toLowerCase().match(searchFilter.toLowerCase()));
+    }
+  );
 
   // Clear the previous content
   s2.innerHTML = "";
@@ -142,6 +154,11 @@ function populateListProductChoices(slct1, slct2) {
     // create a breakline node and add in HTML DOM
     s2.appendChild(a);
   }
+
+
+// Append the slider and labels to the DOM
+s2.appendChild(priceSlider);
+s2.appendChild(priceSliderLabels);
 }
 
 // This function is called when the "Add selected items to cart" button in clicked
@@ -264,5 +281,12 @@ function selectedItems() {
 
 document.querySelector(".tablinks").click();
 populateListProductChoices("dietSelect", "displayProduct");
+
+function updatePriceRange() {
+  document.getElementById("minPriceRangeValue").innerText = "$" + document.getElementById("minPriceRange").value;
+  document.getElementById("maxPriceRangeValue").innerText = "$" + document.getElementById("maxPriceRange").value;
+  populateListProductChoices("dietSelect", "displayProduct");
+}
+updatePriceRange();
 
 //<!-- Signature: Quoc Dat Phung, Ayman Naciri, Alexander Azizi-Martin -->

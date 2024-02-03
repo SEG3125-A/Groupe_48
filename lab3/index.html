@@ -114,6 +114,35 @@
         </button>
         <br />
         <p>The following products match your preferences.</p>
+        <div>
+          <label for="minPriceRange">Min Price:</label>
+          <input
+            type="range"
+            id="minPriceRange"
+            name="minPriceRange"
+            min="1"
+            max="10"
+            step="0.1"
+            value="1"
+            oninput="updatePriceRange()"
+          />
+          <span id="minPriceRangeValue">$1</span>
+        </div>
+        
+        <div>
+          <label for="maxPriceRange">Max Price:</label>
+            <input
+            type="range"
+            id="maxPriceRange"
+            name="maxPriceRange"
+            min="1"
+            max="10"
+            step="0.1"
+            value="10"
+            oninput="updatePriceRange()"
+            />
+          <span id="maxPriceRangeValue">$10</span>
+        </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1"><img width="16px" height="16px" src="images/search-interface-symbol.png"></span>
           <input type="text" class="form-control" placeholder="Search Products" oninput="handleSearch()" id="search" value="">

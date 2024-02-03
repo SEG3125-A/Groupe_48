@@ -117,6 +117,11 @@ var products = [
 // prices should be included in this list, as well as a sort based on price
 
 function restrictListProducts(prods, restriction) {
+  if (restriction === "NoPreference") {
+    // For "All products" category, return all products
+    return prods.map(product => [product.name, product.price]);
+  }
+
   let product_names = [];
   for (let i = 0; i < prods.length; i += 1) {
     if (restriction == "Vegan" && prods[i].vegan == true) {
@@ -132,8 +137,11 @@ function restrictListProducts(prods, restriction) {
     } else if (restriction == "Diabetic" && prods[i].diabetic == true) {
       product_names.push([prods[i].name, prods[i].price]);
     }
+  else if (restriction == "NoPreference") {
+    product_names.push([prods[i].name, prods[i].price]);
   }
-  return product_names;
+}
+return product_names;
 }
 
 // Calculate the total price of items, with received parameter being a list of products
