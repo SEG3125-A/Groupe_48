@@ -5,6 +5,7 @@
 
 body {
    background-color: rgb(255, 255, 255);
+   padding-top: 80px;
 }
 
 
@@ -95,5 +96,38 @@ body {
 
 .testimonials .card {
 	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-footer {
+    margin-top: auto;
+}
+
+.services .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px; 
+}
+
+.services .card-body {
+    flex-grow: 1;
+}
+.card {
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    height: 100%; 
+    align-items: center;
+}
+.card-body img {
+    max-width: 60%; 
+    height: auto; 
+    margin-bottom: 25px;
+}
+
+.about-text {
+    color: #fff; 
 }
 /*<!-- Signature: Quoc Dat Phung, Ayman Naciri, Alexander Azizi-Martin -->*/
