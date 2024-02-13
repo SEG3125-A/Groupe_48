@@ -1,0 +1,141 @@
+/* We took a boostrap course and used it for reference: https://www.youtube.com/watch?v=DFUT5s5SasA */
+* {
+    font-family: Arial, sans-serif;
+}
+
+body {
+   background-color: rgb(255, 255, 255);
+   padding-top: 80px;
+}
+
+.section-padding {
+    padding: 100px 0 ;
+}
+
+.carousel-item {
+    height: 50vh;
+    min-height: 400px;
+}
+
+.carousel-caption {
+    bottom: 220px;
+    z-index: 2;
+}
+
+.carousel-caption h5 {
+    font-size: 45px;
+    text-transform: uppercase;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.carousel-caption p {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+.carousel-inner::before{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+
+}
+
+.navbar-nav a {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+.navbar-light .navbar-brand {
+    color: #000;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px
+}
+
+.navbar-light .navbar-brand:focus{
+    color: #000;
+}
+
+.navbar-light .navbar-brand:hover{
+    color: #000;
+}
+
+.navbar-light .navbar-nav .navbar-link{
+    color: #000;
+}
+
+.services .card-body i{
+    font-size: 50px;
+
+}
+
+.service .card-body i{
+    font-size: 50px;
+    
+}
+
+
+.testimonials .card-body i{
+    font-size: 20px;
+    
+}
+
+.testimonials .card {
+	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.experts .card-body i{
+    font-size: 20px;
+    
+}
+
+.experts .card {
+	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-footer {
+    margin-top: auto;
+}
+
+.services .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px; 
+}
+
+.services .card-body {
+    flex-grow: 1;
+}
+.card {
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    height: 100%; 
+    align-items: center;
+}
+.card-body img {
+    max-width: 60%; 
+    height: auto; 
+    margin-bottom: 25px;
+}
+
+.about-text {
+    color: #fff; 
+}
+/*<!-- Signature: Quoc Dat Phung, Ayman Naciri, Alexander Azizi-Martin -->*/
