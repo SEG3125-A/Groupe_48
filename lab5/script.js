@@ -84,3 +84,18 @@ function setService(value) {
 
   document.getElementById("service-select").value = `${value}`;
 }
+
+// Adding icons to specified elements
+$(document).ready(function () {
+
+  $("#credit-card").before('<i class="bi bi-credit-card"></i>');
+
+  $(".navbar-brand").append('<i class="bi bi-shop"></i>');
+  $(".navbar-nav .nav-link").append('<i class="bi bi-chevron-right"></i>');
+
+  $(".testimonials .card-title").prepend('<i class="bi bi-chat-left-quote"></i>');
+
+  $(".experts .card-title").prepend('<i class="bi bi-person"></i>');
+  $("#book-appointment").append('<i class="bi bi-calendar-plus"></i>');
+  $(".btn.btn-warning.btn-lg.btn-block.mt-3").prepend('<i class="bi bi-calendar-plus"></i>');
+});
