@@ -15,6 +15,11 @@
         <h1 class="text-center my-4">Survey Analysis</h1>
 
         <div>
+            <% if (surveys.length === 0) { %>
+              <h3>No Surveys Completed</h3>
+              <hr >
+            <% } %>
+
             <% for (let i = 0; i < surveys.length; i++) { %>
                 <% let survey = surveys[i]; %>
 
