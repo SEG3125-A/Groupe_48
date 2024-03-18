@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Doodle+Shadow&family=Rubik+Maps&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Doodle+Shadow&family=Rubik+Maps&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Doodle+Shadow&family=Rubik+Maps&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Doodle+Shadow&family=Rubik+Glitch+Pop&family=Rubik+Maps&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="centerText rubik-doodle logo">
+        <shadow-regular>Mini Oasis</shadow-regular>
+      </h1>
+      <!--<h3 class="centerText"><i>Ottawa's Top #10 Grocery Store</i></h3>-->
+      <!-- Tab links, each one with an onclick event associated with it -->
+      <nav
+        class="d-flex align-items-center"
+        style="padding: 12px 16px; background-color: #e9ecef"
+      >
+        <ol class="breadcrumb" style="margin: 0px">
+          <li
+            class="breadcrumb-item tablinks"
+            onclick="openInfo(event, 'Client')"
+          >
+            <span>Client</span>
+          </li>
+          <li
+            class="breadcrumb-item tablinks"
+            onclick="openInfo(event, 'Products')"
+          >
+            <span>Products</span>
+          </li>
+          <li
+            class="breadcrumb-item tablinks active"
+            onclick="openInfo(event, 'Cart')"
+          >
+            <span>Cart</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- <div class="tab">
+        <button class="tablinks" onclick="openInfo(event, 'Client')">
+          Client
+        </button>
+        <button class="tablinks" onclick="openInfo(event, 'Products')">
+          Products
+        </button>
+        <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+      </div> -->
+
+      <!-- Tab content -->
+      <div id="Client" class="tabcontent">
+        <h3>Client Information</h3>
+        <p>Please select the category of products.</p>
+        <div>
+          <span style="margin-right: 8px"> Choose a Category:</span>
+          <select
+            id="dietSelect"
+            name="dietSelect"
+            onchange="populateListProductChoices(this.id, 'displayProduct')"
+            class="form-select"
+            style="display: inline; width: max-content"
+          >
+            <option value="NoPreference" selected>All Products</option>
+            <option value="Organic">Organic</option>
+            <option value="NonOrganic">Non-Organic</option>
+            <option value="Vegan">Vegan</option>
+            <option value="GlutenFree">Gluten Free</option>
+            <option value="LactoseFree">Lactose Free</option>
+            <option value="Diabetic">Diabetic</option>
+          </select>
+        </div>
+        <br /><br />
+      </div>
+
+      <div id="Products" class="tabcontent">
+        <h3>Your targeted products</h3>
+        <button
+          class="button-19"
+          role="button"
+          id="addCart"
+          type="button"
+          class="block"
+          style="margin: 20px 0px"
+          onclick="selectedItems()"
+        >
+          Add selected items to cart
+        </button>
+        <br />
+        <p>The following products match your preferences.</p>
+        <div>
+          <label for="minPriceRange">Min Price:</label>
+          <input
+            type="range"
+            id="minPriceRange"
+            name="minPriceRange"
+            min="1"
+            max="10"
+            step="0.1"
+            value="1"
+            oninput="updatePriceRange()"
+          />
+          <span id="minPriceRangeValue">$1</span>
+        </div>
+        
+        <div>
+          <label for="maxPriceRange">Max Price:</label>
+            <input
+            type="range"
+            id="maxPriceRange"
+            name="maxPriceRange"
+            min="1"
+            max="10"
+            step="0.1"
+            value="10"
+            oninput="updatePriceRange()"
+            />
+          <span id="maxPriceRangeValue">$10</span>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"><img width="16px" height="16px" src="images/search-interface-symbol.png"></span>
+          <input type="text" class="form-control" placeholder="Search Products" oninput="handleSearch()" id="search" value="">
+        </div>        
+        <div id="displayProductHeader">Choose items to buy:</div>
+        <br />
+        <div id="displayProduct"></div>
+      </div>
+
+      <div id="Cart" class="tabcontent">
+        <h3>Cart</h3>
+        <div id="displayCart" class="mb-4">Your cart is currently empty.</div>
+      </div>
+      <p style="font-size: 13px">
+        <i>Signature: Quoc Dat Phung, Ayman Naciri, Alexander Azizi-Martin </i>
+      </p>
+      <script src="scripts/main.js"></script>
+      <script src="scripts/navigation.js"></script>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+<!-- Signature: Quoc Dat Phung, Ayman Naciri, Alexander Azizi-Martin -->
