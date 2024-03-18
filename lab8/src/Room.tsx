@@ -11,12 +11,17 @@ import {
   Text,
   useBoolean,
   useOutsideClick,
+  Heading,
 } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 import { useRef, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 function Room() {
+  const [messages, setMessages] = useState<
+    { time: string; name: string; message: string; color: string }[]
+  >([]);
   const [message, setMessage] = useState("");
   const [emojiPicker, setEmojiPicker] = useBoolean(false);
   const emojiRef = useRef<HTMLDivElement>(null);
@@ -28,22 +33,37 @@ function Room() {
   return (
     <Box bgColor={"#ebebeb"} w={"100%"} h={"100%"} py={8}>
       <Container maxW={"1000px"} h={"100%"}>
-        <Box w={"100%"} h={"90%"} bgColor={"white"} borderRadius={"14px"} p={8}>
-          <Message
-            name={"alex"}
-            time={"7:19pm"}
-            message={"Yo whats up"}
-            color={"green.400"}
-            position={"left"}
-          />
+        <RouterLink to={"/"}>
+          <Heading
+            as={"h1"}
+            size={"3xl"}
+            color={"#f054b0"}
+            mb={4}
+            mx={"auto"}
+            textAlign={"center"}
+          >
+            INSTACHAT
+          </Heading>
+        </RouterLink>
 
-          <Message
-            name={"danny"}
-            time={"7:20pm"}
-            message={"Nothing much"}
-            color={"blue.400"}
-            position={"right"}
-          />
+        <Box
+          w={"100%"}
+          h={"80%"}
+          bgColor={"white"}
+          borderRadius={"14px"}
+          p={8}
+          overflow={"scroll"}
+        >
+          {messages.map(({ name, time, message, color }, i) => (
+            <Message
+              key={i}
+              name={name}
+              time={time}
+              message={message}
+              color={color}
+              position={"right"}
+            />
+          ))}
         </Box>
 
         <InputGroup
@@ -58,6 +78,20 @@ function Room() {
           <Input
             value={message}
             onChange={(event) => setMessage(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" && message) {
+                setMessages([
+                  ...messages,
+                  {
+                    name: "Alex",
+                    time: getCurrentTime(),
+                    color: "blue.400",
+                    message: message,
+                  },
+                ]);
+                setMessage("");
+              }
+            }}
           ></Input>
           <InputRightElement _hover={{ cursor: "pointer" }} ref={emojiRef}>
             <Text onClick={setEmojiPicker.toggle}>🤣</Text>
@@ -114,4 +148,26 @@ function Message({ name, time, message, color, position }: MessageProps) {
       </Stack>
     </Flex>
   );
+}
+
+function getCurrentTime() {
+  const currentTime = new Date();
+  let hours = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+  let meridiem = "am";
+
+  if (hours >= 12) {
+    meridiem = "pm";
+    if (hours > 12) {
+      hours -= 12;
+    }
+  }
+
+  if (hours === 0) {
+    hours = 12;
+  }
+
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+  return hours + ":" + formattedMinutes + meridiem;
 }
