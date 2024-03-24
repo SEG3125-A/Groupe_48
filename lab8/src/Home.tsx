@@ -10,6 +10,7 @@ import {
   VStack,
   Input,
   FormErrorMessage,
+  useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
@@ -21,10 +22,7 @@ function Home() {
     formState: { errors },
   } = useForm({ defaultValues: { roomname: "", passcode: "", nickname: "" } });
   const navigate = useNavigate();
-
-  function onSubmit() {
-    navigate("/room");
-  }
+  const toast = useToast();
 
   return (
     <Box bgColor={"#ebebeb"} w={"100%"} h={"100%"} pt={4}>
@@ -90,7 +88,32 @@ function Home() {
               bgColor={"#c1ff72"}
               size={"lg"}
               borderRadius={"24px"}
-              onClick={handleSubmit(onSubmit)}
+              onClick={handleSubmit((data) => {
+                fetch("http://localhost:8080/join", {
+                  body: JSON.stringify({
+                    roomname: data.roomname,
+                    passcode: data.passcode,
+                    nickname: data.nickname,
+                  }),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  method: "post",
+                  credentials: "include",
+                }).then((res) => {
+                  if (res.ok) {
+                    navigate(`/room/${data.roomname}`);
+                  } else {
+                    toast({
+                      title: "Unauthorized",
+                      description: "Incorrect passcode for roomname",
+                      status: "error",
+                      duration: 9000,
+                      isClosable: true,
+                    });
+                  }
+                });
+              })}
             >
               CREATE or JOIN
             </Button>
