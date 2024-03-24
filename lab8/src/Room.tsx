@@ -15,20 +15,62 @@ import {
 } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
-import { useRef, useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link as RouterLink, useParams } from "react-router-dom";
 
 function Room() {
   const [messages, setMessages] = useState<
-    { time: string; name: string; message: string; color: string }[]
+    {
+      time: string;
+      nickname: string;
+      message: string;
+      color: string;
+      position: "left" | "right";
+    }[]
   >([]);
   const [message, setMessage] = useState("");
   const [emojiPicker, setEmojiPicker] = useBoolean(false);
+  const [ws, setWs] = useState<WebSocket>();
   const emojiRef = useRef<HTMLDivElement>(null);
+  const params = useParams();
   useOutsideClick({
     ref: emojiRef,
     handler: setEmojiPicker.off,
   });
+
+  useEffect(() => {
+    const ws = new WebSocket("ws://localhost:8080");
+
+    ws.onmessage = function message(data) {
+      try {
+        const { nickname, roomname, message, time, isUser, color } = JSON.parse(
+          data.data.toString()
+        );
+
+        if (roomname === params.roomname) {
+          setMessages((messages) => [
+            ...messages,
+            {
+              nickname: nickname,
+              message,
+              time,
+              position: isUser ? "right" : "left",
+              color,
+            },
+          ]);
+        }
+      } catch {}
+    };
+
+    setWs(ws);
+  }, []);
+
+  const objDiv = document.getElementById("your_div");
+  if (objDiv) {
+    requestAnimationFrame(() => {
+      objDiv.scrollTop = objDiv.scrollHeight;
+    });
+  }
 
   return (
     <Box bgColor={"#ebebeb"} w={"100%"} h={"100%"} py={8}>
@@ -53,15 +95,16 @@ function Room() {
           borderRadius={"14px"}
           p={8}
           overflow={"scroll"}
+          id={"your_div"}
         >
-          {messages.map(({ name, time, message, color }, i) => (
+          {messages.map(({ nickname, time, message, color, position }, i) => (
             <Message
               key={i}
-              name={name}
+              nickname={nickname}
               time={time}
               message={message}
               color={color}
-              position={"right"}
+              position={position}
             />
           ))}
         </Box>
@@ -79,17 +122,14 @@ function Room() {
             value={message}
             onChange={(event) => setMessage(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Enter" && message) {
-                setMessages([
-                  ...messages,
-                  {
-                    name: "Alex",
-                    time: getCurrentTime(),
-                    color: "blue.400",
-                    message: message,
-                  },
-                ]);
+              if (event.key === "Enter" && message && ws) {
                 setMessage("");
+                ws.send(
+                  JSON.stringify({
+                    roomname: params.roomname,
+                    message,
+                  })
+                );
               }
             }}
           ></Input>
@@ -114,14 +154,14 @@ function Room() {
 export default Room;
 
 interface MessageProps {
-  name: string;
+  nickname: string;
   time: string;
   message: string;
   color: string;
   position: "left" | "right";
 }
 
-function Message({ name, time, message, color, position }: MessageProps) {
+function Message({ nickname, time, message, color, position }: MessageProps) {
   return (
     <Flex gap={4} flexDir={position === "left" ? "row" : "row-reverse"}>
       <Stack gap={0.25} align={"center"}>
@@ -129,7 +169,7 @@ function Message({ name, time, message, color, position }: MessageProps) {
           a
         </Text>
         <Avatar bg={color} />
-        <Text>{name}</Text>
+        <Text>{nickname}</Text>
       </Stack>
 
       <Stack gap={0.25} align={position === "left" ? "start" : "end"}>
@@ -148,26 +188,4 @@ function Message({ name, time, message, color, position }: MessageProps) {
       </Stack>
     </Flex>
   );
-}
-
-function getCurrentTime() {
-  const currentTime = new Date();
-  let hours = currentTime.getHours();
-  const minutes = currentTime.getMinutes();
-  let meridiem = "am";
-
-  if (hours >= 12) {
-    meridiem = "pm";
-    if (hours > 12) {
-      hours -= 12;
-    }
-  }
-
-  if (hours === 0) {
-    hours = 12;
-  }
-
-  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
-
-  return hours + ":" + formattedMinutes + meridiem;
 }
