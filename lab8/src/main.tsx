@@ -1,32 +1,36 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import Room from "./Room.tsx";
-import Home from "./Home.tsx";
-import Guide from "./Guide.tsx";
-import "./index.css";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ChakraProvider } from '@chakra-ui/react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { I18nextProvider } from 'react-i18next';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import i18n from './i18n'; // Import the i18n configuration
+import Home from './Home.tsx';
+import Room from './Room.tsx';
+import Guide from './Guide.tsx';
+import './index.css';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/room/:roomname",
+    path: '/room/:roomname',
     element: <Room />,
   },
   {
-    path: "/guide",
+    path: '/guide',
     element: <Guide />,
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <I18nextProvider i18n={i18n}>
+        <RouterProvider router={router} />
+      </I18nextProvider>
     </ChakraProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
