@@ -1,0 +1,32 @@
+{
+    "home": {
+      "title": "INSTACHAT",
+      "createRoom": "Créer une salle",
+      "roomNamePlaceholder": "Entrer le nom de la salle",
+      "passcodePlaceholder": "Entrer le code d'accès",
+      "nicknamePlaceholder": "Entrer le pseudo",
+      "createOrJoin": "Créer ou Rejoindre",
+      "termsOfService": "En créant ou rejoignant une salle, vous acceptez nos conditions d'utilisation.",
+      "about": "À propos",
+      "contactUs": "Contactez-nous",
+      "howToUse": "Comment utiliser"
+    },
+    "room": {
+      "title": "INSTACHAT"
+    },
+    "guide": {
+        "title": "Guide de l'utilisateur",
+        "section1": "Étape 1 : Créer ou rejoindre une salle",
+        "content1": "Une personne entre le nom de la salle, le code d'accès et le surnom de cette personne. Le surnom de cette personne. Cliquez ensuite sur “Créer ou rejoindre”",
+        "section2": "Étape 2 : Messagerie",
+        "content2": "Une autre personne peut rejoindre la salle en entrant le même nom de salle et le code d'accès, mais elle peut se choisir un autre surnom. Enfin, cliquez sur “Créer ou rejoindre”.",
+        
+        "content3": "Une fois que tout le monde a quitté la salle en fermant l'onglet du navigateur, les messages ne seront plus disponibles même si la même salle est créée à nouveau.",
+        
+        "content4": "Si tous les participants requis ont rejoint la salle, le propriétaire de la salle peut empêcher d'autres personnes de la rejoindre en cliquant sur l'icône de verrouillage dans le coin inférieur gauche.",
+        
+        "content5": "Pour chatter, tapez votre message dans la zone de texte et appuyez sur Entrée. Vos messages s'afficheront sur le côté droit. Cliquez sur l'icône de téléchargement pour télécharger des photos et sur l'icône emoji pour sélectionner des emojis."
+        
+      }
+  }
+  

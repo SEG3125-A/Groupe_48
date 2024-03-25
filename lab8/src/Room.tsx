@@ -17,8 +17,15 @@ import { PhoneIcon } from "@chakra-ui/icons";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 import { useEffect, useRef, useState } from "react";
 import { Link as RouterLink, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next"; 
+import { useLanguage } from "./LanguageContext"; 
+import en from "./locales/en/translation.json";
+import fr from "./locales/fr/translation.json";
 
 function Room() {
+  const { t } = useTranslation(); 
+  const { language } = useLanguage(); 
+  const roomMessages = language === "fr" ? fr.room : en.room;
   const [messages, setMessages] = useState<
     {
       time: string;
@@ -84,7 +91,7 @@ function Room() {
             mx={"auto"}
             textAlign={"center"}
           >
-            INSTACHAT
+            {roomMessages.title}
           </Heading>
         </RouterLink>
 
@@ -189,3 +196,4 @@ function Message({ nickname, time, message, color, position }: MessageProps) {
     </Flex>
   );
 }
+
