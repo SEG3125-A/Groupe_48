@@ -21,7 +21,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 function Home() {
   const { t } = useTranslation();
-  const { setLanguage } = useLanguage(); // Access the setLanguage function from the language context
+  const { setLanguage } = useLanguage(); 
   const {
     handleSubmit,
     register,

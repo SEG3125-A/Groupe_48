@@ -112,7 +112,7 @@ function Guide() {
             
             <br />
 
-            {/* Add the rest of the sections using similar structures */}
+          
           </VStack>
         </Flex>
       </Container>

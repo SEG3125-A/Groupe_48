@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { I18nextProvider } from 'react-i18next';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import i18n from './i18n'; // Import the i18n configuration
+import i18n from './i18n'; 
 import Home from './Home.tsx';
 import Room from './Room.tsx';
 import Guide from './Guide.tsx';

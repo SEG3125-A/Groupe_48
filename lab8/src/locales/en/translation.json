@@ -20,15 +20,13 @@
         "content1": "One person will enter the room name, the passcode, and that person's nickname. Then, click “Create or Join”.",
         "section2": "Step 2: Messaging",
         "content2": "Another person can join the room by entering the same room name and the passcode, but they can choose a different nickname for themselves. Finally, click “Create or Join”.",
-        "section3": "Joining a Room",
+        
         "content3": "Once everyone left the room by closing the browser tab, the messages will no longer be available even if the same room is created again.",
-        "section4": "Chatting",
+        
         "content4": "If all the required participants have join the room, the room owner can prevent others from joining by clicking on the lock icon at the bottom left corner.",
-        "section5": "Leaving a Room",
-        "content5": "To chat, type your message into the textbox and hit enter. Your messages will be displayed at the right side. Click on the upload icon to upload photos and the emoji icon to select emojis.",
-        "section6": "Feedback",
-        "content6": "We welcome your feedback! If you have any suggestions or encounter any issues, please feel free to contact us.",
-        "backHome": "Back to Home"
+        
+        "content5": "To chat, type your message into the textbox and hit enter. Your messages will be displayed at the right side. Click on the upload icon to upload photos and the emoji icon to select emojis."
+        
       }
   }
   

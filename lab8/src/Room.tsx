@@ -17,14 +17,14 @@ import { PhoneIcon } from "@chakra-ui/icons";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 import { useEffect, useRef, useState } from "react";
 import { Link as RouterLink, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
-import { useLanguage } from "./LanguageContext"; // Adjusted import path
+import { useTranslation } from "react-i18next"; 
+import { useLanguage } from "./LanguageContext"; 
 import en from "./locales/en/translation.json";
 import fr from "./locales/fr/translation.json";
 
 function Room() {
-  const { t } = useTranslation(); // Initialize useTranslation hook
-  const { language } = useLanguage(); // Use useLanguage hook to get the current language
+  const { t } = useTranslation(); 
+  const { language } = useLanguage(); 
   const roomMessages = language === "fr" ? fr.room : en.room;
   const [messages, setMessages] = useState<
     {

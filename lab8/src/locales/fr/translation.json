@@ -20,15 +20,13 @@
         "content1": "Une personne entre le nom de la salle, le code d'accès et le surnom de cette personne. Le surnom de cette personne. Cliquez ensuite sur “Créer ou rejoindre”",
         "section2": "Étape 2 : Messagerie",
         "content2": "Une autre personne peut rejoindre la salle en entrant le même nom de salle et le code d'accès, mais elle peut se choisir un autre surnom. Enfin, cliquez sur “Créer ou rejoindre”.",
-        "section3": "Rejoindre une salle",
+        
         "content3": "Une fois que tout le monde a quitté la salle en fermant l'onglet du navigateur, les messages ne seront plus disponibles même si la même salle est créée à nouveau.",
-        "section4": "Discuter",
+        
         "content4": "Si tous les participants requis ont rejoint la salle, le propriétaire de la salle peut empêcher d'autres personnes de la rejoindre en cliquant sur l'icône de verrouillage dans le coin inférieur gauche.",
-        "section5": "Quitter une salle",
-        "content5": "Pour chatter, tapez votre message dans la zone de texte et appuyez sur Entrée. Vos messages s'afficheront sur le côté droit. Cliquez sur l'icône de téléchargement pour télécharger des photos et sur l'icône emoji pour sélectionner des emojis.",
-        "section6": "Retour d'information",
-        "content6": "Nous apprécions vos commentaires! Si vous avez des suggestions ou rencontrez des problèmes, n'hésitez pas à nous contacter.",
-        "backHome": "Retour à la page d'accueil"
+        
+        "content5": "Pour chatter, tapez votre message dans la zone de texte et appuyez sur Entrée. Vos messages s'afficheront sur le côté droit. Cliquez sur l'icône de téléchargement pour télécharger des photos et sur l'icône emoji pour sélectionner des emojis."
+        
       }
   }
   
